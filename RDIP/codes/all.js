@@ -33,6 +33,8 @@ x1=x.split(" ");
 	document.getElementById("demo5").innerHTML=""
 	document.getElementById("demo4").innerHTML=""
 	document.getElementById("demo6").innerHTML=""
+	document.getElementById("demo7").innerHTML=""
+	document.getElementById("b5").innerHTML="Get Correct Sentence"
 
 
 
@@ -72,7 +74,7 @@ for(i=0;i<x1.length;i++)
 button.addEventListener ("click", function() {
 	document.getElementById("demo4").innerHTML="Formed Sentence<span style='font-style:italic;color:blue;font-weight:lighter'>(after selecting words):</span>";
     document.getElementById("demo5").innerHTML+=this.innerHTML+" ";
-    this.style.visibility="hidden";
+    this.style.display="none";
     count=count+1;
  
     if (count>0 ) 
@@ -117,7 +119,9 @@ for(i=0;i<y1.length;i++)
 button.addEventListener ("click", function() {
 	document.getElementById("demo4").innerHTML="Formed Sentence<span style='font-style:italic;color:blue;font-weight:lighter'>(after selecting words):</span>";
     document.getElementById("demo5").innerHTML+=this.innerHTML+" ";
-    this.style.visibility="hidden";
+    
+
+    this.style.display="none";
     count=count+1;
 
     if (count>0) 
@@ -133,12 +137,15 @@ button.addEventListener ("click", function() {
      }
 });
 
+
+
 }
 }
 
 
 else
 {
+	
 	document.getElementById("demo").innerHTML=""
 	document.getElementById("demo1").innerHTML=""
 	document.getElementById("demo3").innerHTML=""
@@ -150,21 +157,27 @@ function reset()
 
   for(i=0;i<x1.length||i<y1.length;i++)
   {
-    if(document.getElementById('button'+i).style.visibility=="hidden")
+    if(document.getElementById('button'+i).style.display=="none")
     {
-   document.getElementById('button'+i).style.visibility="visible";
+   document.getElementById('button'+i).style.display="inline";
+
+
     document.getElementById('demo4').innerHTML=""
     document.getElementById('demo5').innerHTML=""
     document.getElementById('demo6').innerHTML=""
+    document.getElementById("demo7").innerHTML=""
     document.getElementById('b3').style.visibility="hidden"
      document.getElementById('b4').style.visibility="hidden"  
      document.getElementById("b5").style.visibility="hidden"; 
 }
-}
-}
-    function check()
-{
 
+}
+
+}
+function check()
+{
+document.getElementById("b5").innerHTML="Get Correct Sentence"
+ document.getElementById("demo7").innerHTML=""
   var x=String(document.getElementById("demo5").innerHTML).replace(/\s+$/, '');
   c=0;
   p=0
@@ -229,6 +242,82 @@ else
 
 }
 }
+
+
+function toggle()
+{
+a=maineng.indexOf(x)
+s=main[a]
+b=mainhin.indexOf(y)
+r=main1[b]
+
+
+
+if(document.getElementById("eng").selected)
+	{
+		if(document.getElementById("b5").innerHTML=="Get Correct Sentence")
+		{
+       for(i=0;i<s.length;i++)
+  { 
+   document.getElementById("demo7").innerHTML+=s[i]+"<br>";
+   document.getElementById("b5").innerHTML="Hide the correct Sentence" 
+} 
+}
+else if(document.getElementById("b5").innerHTML=="Hide the correct Sentence")
+	{
+		
+   document.getElementById("demo7").innerHTML=""
+   document.getElementById("b5").innerHTML="Get Answers"
+}
+else if(document.getElementById("b5").innerHTML=="Get Answers")
+{
+
+       for(i=0;i<s.length;i++)
+  { 
+   document.getElementById("demo7").innerHTML+=s[i]+"<br>";
+   document.getElementById("b5").innerHTML="Hide the correct Sentence" 
+} 
+}
+}
+else if(document.getElementById("hin").selected)
+	{ 
+
+		if(document.getElementById("b5").innerHTML=="Get Correct Sentence")
+		{
+       for(i=0;i<r.length;i++)
+  { 
+   document.getElementById("demo7").innerHTML+=r[i]+"<br>";
+   document.getElementById("b5").innerHTML="Hide the correct Sentence" 
+} 
+}
+else if(document.getElementById("b5").innerHTML=="Hide the correct Sentence")
+	{
+		
+   document.getElementById("demo7").innerHTML=""
+   document.getElementById("b5").innerHTML="Get Answers"
+}
+else if(document.getElementById("b5").innerHTML=="Get Answers")
+{
+
+	for(i=0;i<r.length;i++)
+
+  {
+   
+   document.getElementById("demo7").innerHTML+=r[i]+"<br>";
+   document.getElementById("b5").innerHTML="Hide the correct Sentence" 
+}	
+ 
+}
+}
+}
+
+
+
+
+
+
+
+
 
 
   
